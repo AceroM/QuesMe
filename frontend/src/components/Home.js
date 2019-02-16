@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Link, Route, Switch, Redirect } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-
+import Classroom from './Classroom';
+import Dashboard from './dashboard/Dashboard';
 
 export default class Home extends Component {
     constructor(props) {
@@ -16,9 +17,7 @@ export default class Home extends Component {
             <div className="Home">
                 { isLoggedIn ? (
                     <div className="homepage-container">
-                        <h1>Hello {username}</h1>
-                        <br></br>
-                        <p>Displaying dashboard below:</p>
+                        <Classroom/>
                         <br></br>
                         <Dashboard/>
                     </div>
