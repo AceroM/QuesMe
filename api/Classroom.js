@@ -40,4 +40,68 @@ router.get('/create/:name', async (req, res, next) => {
     }
 })
 
+router.get('/upvote/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const found = await Classroom.find({
+            where: {
+                id
+            }
+        })
+        if (!found) res.status(501).send('Cant find sorry pal');
+        else {
+            const newUpvote = found.upvote + 1;
+            found.update({
+                upvote: newUpvote
+            })
+            res.send(201);
+        }
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+router.get('/middlevote/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const found = await Classroom.find({
+            where: {
+                id
+            }
+        })
+        if (!found) res.status(501).send('Cant find sorry pal');
+        else {
+            const newMiddlevote = found.middlevote + 1;
+            found.update({
+                middlevote: newMiddlevote
+            })
+            res.send(201);
+        }
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+
+router.get('/downvote/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const found = await Classroom.find({
+            where: {
+                id
+            }
+        })
+        if (!found) res.status(501).send('Cant find sorry pal');
+        else {
+            const newDownvote = found.downvote + 1;
+            found.update({
+                downvote: newDownvote
+            })
+            res.send(201);
+        }
+    } catch (err) {
+        console.error(err)
+    }
+})
+
 router.get('/generateQr')
