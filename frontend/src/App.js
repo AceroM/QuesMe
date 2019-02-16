@@ -1,26 +1,46 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import Home from './components/Home';
+import Login from './components/Login';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "Angela",
+      isLoggedIn: false
+    }
+  }
+
+  setUsername = (e) => {
+    this.setState({ username: e.target.value });
+  }
+
+  setUsername = (e) => {
+    this.setState({ username: e.target.value });
+  }
+
   render() {
+    const { username } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Switch>
+            <Route
+              exact path='/'
+              render={(props) => <Home {...props} username={username} />}
+            />
+            <Route exact path="/" component={Classroom} />
+            <Route path="/login" component={Login} />
+            <Route
+              path='/login'
+              render={(props) => <Login {...props} setUsername={this.setUsername} />}
+            />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
