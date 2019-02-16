@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Event extends Component {
+class QuestionForm extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -11,7 +11,6 @@ class Event extends Component {
   }
 
   handleChange(event) {
-    console.log("dsdsfd");
     const tempQuestion = event.target.value;
     this.setState({
       tempQuestion: tempQuestion
@@ -21,16 +20,11 @@ class Event extends Component {
   handleSubmit(event) {
     event.preventDefault();
     var obj = {
-      name: this.state.userName,
-      question: this.state.tempQuestion
+      text: this.state.tempQuestion,
+      votes: 0
     };
     if (this.state.tempQuestion != "") {
-      let updatedListofQuestions = this.state.listOfQuestions;
-      updatedListofQuestions.push(this.state.tempQuestion);
-      this.setState({
-        listOfQuestions: updatedListofQuestions,
-        tempQuestion: ""
-      });
+      this.props.addQuestion(obj);
     }
   }
 
@@ -63,4 +57,4 @@ class Event extends Component {
   }
 }
 
-export default Event;
+export default QuestionForm;
