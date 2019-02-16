@@ -16,9 +16,16 @@ class Login extends Component {
       });
     }
 
-    handleSubmit() {
+    handleSubmit = (event) => {
       //Will also need to pass username up (to Express?)
-      this.props.setLoggedIn();
+      event.preventDefault();
+      try {
+        this.props.setLoggedIn();
+        this.props.history.push("/");
+      }
+      catch (e) {
+        alert(e.message);
+      }
     }
 
     render() {

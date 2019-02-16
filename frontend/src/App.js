@@ -23,7 +23,7 @@ class App extends Component {
         <div className="App">
           {/* <button onClick={this.setLoggedIn}> Login </button> */}
           <Switch>
-            <Route exact path="/" component={Classroom} />
+            <Route exact path="/" component={Classroom} props={this.props}/>
             <Route path="/login" component={Login} />
           </Switch>
         </div>
