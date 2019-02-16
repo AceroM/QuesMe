@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Classroom from './components/Classroom';
+import Home from './components/Home';
 import Login from './components/Login';
 import './App.css';
 
@@ -30,7 +30,7 @@ class App extends Component {
           <Switch>
             <Route
               exact path='/'
-              render={(props) => <Classroom {...props} username={username} />}
+              render={(props) => <Home {...props} username={username} />}
             />
             <Route exact path="/" component={Classroom} />
             <Route path="/login" component={Login} />
