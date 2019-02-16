@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Link, Route, Switch, Redirect } from "react-router-dom";
 import socketIOClient from 'socket.io-client';
-
+import Classroom from './Classroom'
 
 export default class Home extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ export default class Home extends Component {
         return (
             <div className="Home">
                 {isLoggedIn ? (
-                    <div className="homepage-container">Hello {username}</div>
+                    <div className="homepage-container"><Classroom/></div>
                 ) : (
                         <Redirect to="/login" />
                     )}
