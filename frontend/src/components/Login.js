@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -20,8 +20,9 @@ class Login extends Component {
       //Will also need to pass username up (to Express?)
       event.preventDefault();
       try {
-        console.log(this.props);
         this.props.setUsername(this.state.username);
+        this.props.setLoggedIn();
+        // Redirect to home page ("/")
         this.props.history.push("/");
       }
       catch (e) {
