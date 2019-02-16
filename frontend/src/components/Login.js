@@ -20,7 +20,8 @@ class Login extends Component {
       //Will also need to pass username up (to Express?)
       event.preventDefault();
       try {
-        this.props.setLoggedIn();
+        console.log(this.props);
+        this.props.setUsername(this.state.username);
         this.props.history.push("/");
       }
       catch (e) {

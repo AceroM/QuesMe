@@ -14,12 +14,8 @@ class App extends Component {
     }
   }
 
-  setUsername = (e) => {
-    this.setState({ username: e.target.value });
-  }
-
-  setUsername = (e) => {
-    this.setState({ username: e.target.value });
+  setUsername = (username) => {
+    this.setState({ username: username });
   }
 
   render() {
@@ -32,8 +28,8 @@ class App extends Component {
               exact path='/'
               render={(props) => <Home {...props} username={username} />}
             />
-            <Route exact path="/" component={Classroom} />
-            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+            {/* <Route path="/login" component={Login} /> */}
             <Route
               path='/login'
               render={(props) => <Login {...props} setUsername={this.setUsername} />}
