@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
-export default class Classroom extends Component {
+export default class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
+    const { username } = this.props;
     return (
       <div>
-        This is a classroom
+        Hello {username}
       </div>
     )
   }
