@@ -2,7 +2,7 @@ const db = require("./db");
 const Sequelize = require("sequelize");
 
 const Classroom = db.define("classroom", {
-    username: {
+    name: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false,
@@ -21,7 +21,7 @@ const Classroom = db.define("classroom", {
     downvote: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
-    }
+    },
 })
 
 module.exports = Classroom;

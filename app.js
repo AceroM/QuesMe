@@ -14,8 +14,32 @@ app.get('/', (req, res, next) => {
 
 app.use('/api', require('./api'));
 
-db.sync().then((m) => console.log(m.models));
+db.sync().then(() => console.log('connected '));
 
 const PORT = process.env.port || 5000
 
-app.listen(PORT, () => console.log(`listening on ${PORT}`))
+const server = app.listen(PORT, () => console.log(`listening on ${PORT}`))
+
+var io = require('socket.io')(server);
+//Socket
+io.on('connection', function (socket) {
+    //Listen for connection, when one happens:
+    socket.on('user_connect', function (name) {
+        console.log(name + " connected");
+        io.emit('user_connect', name);
+    });
+    //Requires socket.io to be implemented in html
+
+    //When someone disconnects:
+    socket.on('disconnect', function () {
+        io.emit('disconnect', socket.name);
+    });
+
+    //When someone sends a private message:
+    // socket.on('pm', function(msg, name, receiver, matches){    
+    //     console.log("A PM HAS BEEN SENT: " + msg + "| from: " + name + "| to: " + receiver)
+    //     console.log('with payload: ')
+    //     console.log(matches)
+    //     io.emit('pm'+receiver, msg, name, matches);
+    // });
+});

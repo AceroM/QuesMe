@@ -14,29 +14,35 @@ class App extends Component {
     }
   }
 
-  setUsername = (e) => {
-    this.setState({ username: e.target.value });
+  setUsername = (username) => {
+    this.setState({ username: username });
   }
 
-  setUsername = (e) => {
-    this.setState({ username: e.target.value });
+  setLoggedIn = () => {
+    this.setState({ isLoggedIn: true });
   }
 
   render() {
-    const { username } = this.state;
+    const { username, isLoggedIn } = this.state;
+    
     return (
       <BrowserRouter>
         <div className="App">
           <Switch>
             <Route
               exact path='/'
-              render={(props) => <Home {...props} username={username} />}
+              render={(props) => <Home {...props} username={username} isLoggedIn={isLoggedIn} />}
             />
-            <Route exact path="/" component={Classroom} />
-            <Route path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+            {/* <Route path="/login" component={Login} /> */}
             <Route
               path='/login'
-              render={(props) => <Login {...props} setUsername={this.setUsername} />}
+              render={(props) => 
+                <Login {...props} 
+                  setUsername={this.setUsername} 
+                  setLoggedIn={this.setLoggedIn}
+                />
+              }
             />
           </Switch>
         </div>
