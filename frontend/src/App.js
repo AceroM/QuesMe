@@ -32,7 +32,6 @@ class App extends Component {
               exact path='/'
               render={(props) => <Home {...props} username={username} />}
             />
-            <Route exact path="/" component={Classroom} />
             <Route path="/login" component={Login} />
             <Route
               path='/login'
