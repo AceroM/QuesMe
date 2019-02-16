@@ -1,6 +1,6 @@
 const db = require('./db');
-const Hacker = require('./Classroom');
+const Classroom = require('./Classroom');
 
 module.exports = {
-    db, Hacker
+    db, Classroom
 }
