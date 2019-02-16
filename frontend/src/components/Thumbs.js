@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../styles/Thumbs.css';
 
 export default class Thumbs extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             thumbPercentage: '1'
@@ -26,5 +26,5 @@ export default class Thumbs extends Component {
                 </div>
             </div>
         )
-  }
+    }
 }
