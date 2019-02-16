@@ -7,8 +7,6 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            tempusername: "",
-            temppassword: "",
         };
     }
 
