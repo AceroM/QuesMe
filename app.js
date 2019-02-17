@@ -25,6 +25,13 @@ var numUsers = 0;
 io.on('connection', function (socket) {
     var addedUser = false;
 
+    socket.on('change mode', (data) => {
+        console.log('changing mode...')
+        socket.broadcast.emit('change mode', {
+            data
+        })
+    })
+
     socket.on('new upvote', (data) => {
         socket.broadcast.emit('new upvote', {
             username: socket.username,

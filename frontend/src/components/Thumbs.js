@@ -15,7 +15,11 @@ export default class Thumbs extends Component {
     render() {
         return (
             <div>
-                <div className="body"> {this.state.thumbPercentage}% </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <h2> How is the class doing right now ?</h2>
                 <div class="rating">
                     <div class="like grow">
                         <i class="fa fa-thumbs-up fa-3x like" aria-hidden="true"></i>
