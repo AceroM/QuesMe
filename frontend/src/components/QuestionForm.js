@@ -20,8 +20,8 @@ class QuestionForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     var obj = {
-      text: this.state.tempQuestion,
-      votes: 0
+      label: this.state.tempQuestion,
+      value: 10
     };
     if (this.state.tempQuestion != "") {
       this.props.addQuestion(obj);
