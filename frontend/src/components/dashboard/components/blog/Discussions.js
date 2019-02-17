@@ -98,45 +98,45 @@ Discussions.defaultProps = {
   discussions: [
     {
       id: 1,
-      date: "3 days ago",
+      date: "<1 minute ago",
       author: {
         image: require("../../images/avatars/1.jpg"),
-        name: "John Doe",
+        name: "Leo Au-Yeung",
         url: "#"
       },
       post: {
-        title: "Hello World!",
+        title: "What is a linked list?",
         url: "#"
       },
-      body: "Well, the way they make shows is, they make one show ..."
+      body: "What is a linked list?"
     },
     {
       id: 2,
-      date: "4 days ago",
+      date: "10 minutes ago",
       author: {
         image: require("../../images/avatars/2.jpg"),
-        name: "John Doe",
+        name: "Shariar Kabir",
         url: "#"
       },
       post: {
-        title: "Hello World!",
+        title: "How to calculate derivative?",
         url: "#"
       },
-      body: "After the avalanche, it took us a week to climb out. Now..."
+      body: ""
     },
     {
       id: 3,
-      date: "5 days ago",
+      date: "38 minutes ago",
       author: {
         image: require("../../images/avatars/3.jpg"),
-        name: "John Doe",
+        name: "Miguel Acero",
         url: "#"
       },
       post: {
-        title: "Hello World!",
+        title: "Can you go over question 1?",
         url: "#"
       },
-      body: "My money's in that office, right? If she start giving me..."
+      body: "Can you go over question 1?"
     }
   ]
 };
