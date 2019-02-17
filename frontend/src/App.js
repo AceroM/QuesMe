@@ -9,21 +9,32 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedIn: false,
+      isTeacher: false,
       username: "Angela",
-      isLoggedIn: false
+      studentname: "studdy",
     }
-  }
-
-  setUsername = (username) => {
-    this.setState({ username: username });
   }
 
   setLoggedIn = () => {
     this.setState({ isLoggedIn: true });
   }
 
+  setIsTeacher = (bool) => {
+    this.setState({ isTeacher: bool })
+  }
+
+  setUsername = (username) => {
+    this.setState({ username: username });
+  }
+
+  setStudentname = (name) => {
+    this.setState({ studentname: name })
+  }
+
+
   render() {
-    const { username, isLoggedIn } = this.state;
+    const { isLoggedIn, isTeacher, username, studentname } = this.state;
     
     return (
       <BrowserRouter>
@@ -31,16 +42,22 @@ class App extends Component {
           <Switch>
             <Route
               exact path='/'
-              render={(props) => <Home {...props} username={username} isLoggedIn={isLoggedIn} />}
+              render={(props) => 
+                <Home {...props} 
+                  isLoggedIn={isLoggedIn}
+                  isTeacher={isTeacher}
+                  username={username}
+                  studentname={studentname}
+                />}
             />
-            <Route exact path="/" component={Home} />
-            {/* <Route path="/login" component={Login} /> */}
             <Route
               path='/login'
               render={(props) => 
                 <Login {...props} 
-                  setUsername={this.setUsername} 
                   setLoggedIn={this.setLoggedIn}
+                  setIsTeacher={this.setIsTeacher}
+                  setUsername={this.setUsername}
+                  setStudentname={this.setStudentname}
                 />
               }
             />
