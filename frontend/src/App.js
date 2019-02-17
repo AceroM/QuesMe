@@ -26,24 +26,26 @@ class App extends Component {
 
   setUsername = (username) => {
     this.setState({ username: username });
+    console.log(this.state)
   }
 
   setStudentname = (name) => {
     this.setState({ studentname: name })
+    console.log(this.state)
   }
 
 
   render() {
     const { isLoggedIn, isTeacher, username, studentname } = this.state;
-    
+
     return (
       <BrowserRouter>
         <div className="App">
           <Switch>
             <Route
               exact path='/'
-              render={(props) => 
-                <Home {...props} 
+              render={(props) =>
+                <Home {...props}
                   isLoggedIn={isLoggedIn}
                   isTeacher={isTeacher}
                   username={username}
@@ -52,8 +54,8 @@ class App extends Component {
             />
             <Route
               path='/login'
-              render={(props) => 
-                <Login {...props} 
+              render={(props) =>
+                <Login {...props}
                   setLoggedIn={this.setLoggedIn}
                   setIsTeacher={this.setIsTeacher}
                   setUsername={this.setUsername}

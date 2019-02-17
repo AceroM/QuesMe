@@ -29,7 +29,6 @@ export default class Home extends Component {
     };
   }
 
-
   addQuestion = (question) => {
     let listOfQuestions = this.state.listOfQuestions;
     listOfQuestions.push(question);
@@ -48,7 +47,7 @@ export default class Home extends Component {
 
 
   bubbleClick = (label) => {
-    socket.emit('new upvote', label);
+    socket.emit('new upvote', ({ label, username: this.props.username }))
     let listOfQuestions = this.state.listOfQuestions;
     for (var i = 0; i < listOfQuestions.length; i++) {
       if (listOfQuestions[i].label == label) {
@@ -71,7 +70,11 @@ export default class Home extends Component {
   componentDidMount() {
     const { username } = this.props;
     socket.emit('add user', username);
-    socket.on('new upvote', data => this.bubbleClick(data.value))
+    socket.on('new upvote', data => {
+      const newUser = data.value.username;
+      let { label } = data.value;
+      // this.bubbleClick(label);
+    })
     socket.on('user joined', data => console.log(data));
     socket.on('login', (data) => {
       console.log('connected:')
