@@ -27,7 +27,7 @@ Throughout our education, it has always been a teacher to student relationship a
   $ sudo apt install nodejs
   ```
 
-  After installing Node, type in terminal:
+  After installing Node, cd to the frontend folder and type in terminal:
 
   ```sh
   $ npm install
