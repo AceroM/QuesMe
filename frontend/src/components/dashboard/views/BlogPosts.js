@@ -13,6 +13,8 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:5000');
 
 class BlogPosts extends React.Component {
   constructor(props) {
@@ -152,6 +154,23 @@ class BlogPosts extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('hello')
+    const username = 'teacher';
+    socket.emit('add user', username);
+    // socket.on('new upvote', data => {
+    //   const newUser = data.value.username;
+    //   let { label } = data.value;
+    //   console.log(label)
+    //   this.recieveClick(label);
+    // })
+    socket.on('user joined', data => console.log(data));
+    socket.on('login', (data) => {
+      console.log('connected:')
+      console.log(data)
+    })
+  }
+
   render() {
     const {
       PostsListOne,
@@ -181,7 +200,7 @@ class BlogPosts extends React.Component {
                   </Badge>
                   <div className="card-post__author d-flex">
                     <a
-                      onClick={() => alert('activate questions')}
+                      onClick={() => socket.emit('change mode', 1)}
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{ backgroundImage: `url('${post.authorAvatar}')` }}
                     >
@@ -191,7 +210,7 @@ class BlogPosts extends React.Component {
                 </div>
                 <CardBody>
                   <h5 className="card-title">
-                    <a onClick={() => alert('activate questions')} className="text-fiord-blue">
+                    <a onClick={() => socket.emit('change mode', 1)} className="text-fiord-blue">
                       {post.title}
                     </a>
                   </h5>

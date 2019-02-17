@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import LikeButton from "./LikeButton";
 import BubbleChart from '@weknow/react-bubble-chart-d3';
+import Thumbs from './Thumbs';
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:5000');
 
@@ -18,6 +19,7 @@ export default class Home extends Component {
   constructor(props) {
     super();
     this.state = {
+      isThumbs: false,
       listOfQuestions: [
         { label: 'What is a linked list?', value: 34 },
         { label: 'Why should we use a stack again?', value: 1 },
@@ -81,6 +83,10 @@ export default class Home extends Component {
   componentDidMount() {
     const { username } = this.props;
     socket.emit('add user', username);
+    socket.on('change mode', data => {
+      console.log('activated here')
+      this.setState({ isThumbs: true });
+    })
     socket.on('new upvote', data => {
       const newUser = data.value.username;
       let { label } = data.value;
@@ -99,45 +105,50 @@ export default class Home extends Component {
     const rows = this.state.listOfQuestions;
     return (
       <div>
-        <div className="WordCloud">
-          <h1 className="WordCloud">Questions</h1>
-          <br />
-          <BubbleChart
-            width={800}
-            height={800}
-            fontFamily="Arial"
-            bubbleClickFun={this.bubbleClick}
-            data={this.state.listOfQuestions}
-          />
-        </div>
-        <Paper className="Question-Paper">
-          <Table className="Question-Table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Question</TableCell>
-                <TableCell align="right">Votes</TableCell>
-                <TableCell align="right">Vote</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell component="th" scope="row">
-                    {row.label}
-                  </TableCell>
-                  <TableCell align="right">{row.value}</TableCell>
-                  <TableCell align="right"><Button size="small" color="primary" >
-                    <LikeButton link="https://image.flaticon.com/icons/png/128/126/126471.png" decrementVote={this.decrementVote} incrementVote={this.incrementVote} my_id={index} my_index={this.props.my_key} likes={this.props.likes} style={{ display: 'flex' }} />
-                    <br />
-                  </Button></TableCell>
+        {this.state.isThumbs ? <Thumbs />
+          : (
+            <div className="cloud">
+              <div className="WordCloud">
+                <h1 className="WordCloud">Questions</h1>
+                <br />
+                <BubbleChart
+                  width={800}
+                  height={800}
+                  fontFamily="Arial"
+                  bubbleClickFun={this.bubbleClick}
+                  data={this.state.listOfQuestions}
+                />
+              </div>
+              <Paper className="Question-Paper">
+                <Table className="Question-Table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Question</TableCell>
+                      <TableCell align="right">Votes</TableCell>
+                      <TableCell align="right">Vote</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map((row, index) => (
+                      <TableRow key={index}>
+                        <TableCell component="th" scope="row">
+                          {row.label}
+                        </TableCell>
+                        <TableCell align="right">{row.value}</TableCell>
+                        <TableCell align="right"><Button size="small" color="primary" >
+                          <LikeButton link="https://image.flaticon.com/icons/png/128/126/126471.png" decrementVote={this.decrementVote} incrementVote={this.incrementVote} my_id={index} my_index={this.props.my_key} likes={this.props.likes} style={{ display: 'flex' }} />
+                          <br />
+                        </Button></TableCell>
 
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
-        <QuestionForm
-          addQuestion={this.addQuestion} />
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </Paper>
+              <QuestionForm
+                addQuestion={this.addQuestion} />
+            </div>
+          )}
       </div>
     )
   }
