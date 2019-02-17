@@ -45,6 +45,17 @@ export default class Home extends Component {
     })
   }
 
+  recieveClick = (label) => {
+    let listOfQuestions = this.state.listOfQuestions;
+    for (var i = 0; i < listOfQuestions.length; i++) {
+      if (listOfQuestions[i].label == label) {
+        listOfQuestions[i].value = listOfQuestions[i].value + 1
+        this.setState({
+          listOfQuestions: listOfQuestions
+        })
+      }
+    }
+  }
 
   bubbleClick = (label) => {
     socket.emit('new upvote', ({ label, username: this.props.username }))
@@ -73,7 +84,8 @@ export default class Home extends Component {
     socket.on('new upvote', data => {
       const newUser = data.value.username;
       let { label } = data.value;
-      // this.bubbleClick(label);
+      console.log(label)
+      this.recieveClick(label);
     })
     socket.on('user joined', data => console.log(data));
     socket.on('login', (data) => {
