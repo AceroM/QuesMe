@@ -7,6 +7,8 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
+            studentname: "",
+            roomid: "",
         };
     }
 
@@ -16,12 +18,26 @@ class Login extends Component {
       });
     }
 
-    handleSubmit = (event) => {
-      //Will also need to pass username up (to Express?)
+    handleSubmitTeacher = (event) => {
       event.preventDefault();
       try {
-        this.props.setUsername(this.state.username);
         this.props.setLoggedIn();
+        this.props.setUsername(this.state.username);
+        this.props.setIsTeacher(true); //IS A TEACHER
+        // Redirect to home page ("/")
+        this.props.history.push("/");
+      }
+      catch (e) {
+        alert(e.message);
+      }
+    }
+
+    handleSubmitStudent = (event) => {
+      event.preventDefault();
+      try {
+        this.props.setLoggedIn();
+        this.props.setStudentname(this.state.studentrname);
+        this.props.setIsTeacher(false); //NOT A TEACHER
         // Redirect to home page ("/")
         this.props.history.push("/");
       }
@@ -33,7 +49,9 @@ class Login extends Component {
     render() {
         return (
             <div className="Login">
-                <form onSubmit={this.handleSubmit}>
+              <div className="teacher-login">
+                <h1>Are you a teacher?</h1>
+                <form onSubmit={this.handleSubmitTeacher}>
                     Username:&nbsp;
                     <input
                         name="username"
@@ -52,6 +70,30 @@ class Login extends Component {
                     <br></br>
                     <button type="submit">Login</button>
                 </form>
+              </div>
+              <br></br>
+              <div className="student-login">
+                <h1>Are you a student?</h1>
+                <form onSubmit={this.handleSubmitStudent}>
+                    Name:&nbsp;
+                    <input
+                        name="studentname"
+                        type="text" 
+                        value={this.state.studentname}
+                        onChange={this.handleChange}
+                    />
+                    <br></br>
+                    Room ID:&nbsp;
+                    <input
+                        name="roomid"
+                        type="text" 
+                        value={this.state.roomid}
+                        onChange={this.handleChange}
+                    />
+                    <br></br>
+                    <button type="submit">Join Room</button>
+                </form>
+              </div>
             </div>
         );
       }
