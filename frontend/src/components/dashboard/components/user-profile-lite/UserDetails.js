@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 import {
   Card,
   CardHeader,
@@ -9,7 +10,7 @@ import {
   Progress
 } from "shards-react";
 
-const UserDetails = ({ userDetails }) => (
+const UserDetails = ({ userDetails, name }) => (
   <Card small className="mb-4 pt-3">
     <CardHeader className="border-bottom text-center">
       <div className="mb-3 mx-auto">
@@ -20,7 +21,7 @@ const UserDetails = ({ userDetails }) => (
           width="110"
         />
       </div>
-      <h4 className="mb-0">{userDetails.name}</h4>
+      <h4 className="mb-0">{name}</h4>
       <span className="text-muted d-block mb-2">{userDetails.jobTitle}</span>
       <Button pill outline size="sm" className="mb-2">
         <i className="material-icons mr-1">person_add</i> Follow
@@ -61,7 +62,7 @@ UserDetails.propTypes = {
 
 UserDetails.defaultProps = {
   userDetails: {
-    name: "Sierra Brooks",
+    name: "asdf",
     avatar: require("./../../images/avatars/0.jpg"),
     jobTitle: "Project Manager",
     performanceReportTitle: "Workload",
@@ -72,4 +73,10 @@ UserDetails.defaultProps = {
   }
 };
 
-export default UserDetails;
+const mapState = state => {
+  return {
+    name: state.user.username
+  }
+}
+
+export default connect(mapState)(UserDetails);

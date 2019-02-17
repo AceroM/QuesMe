@@ -27,9 +27,9 @@ class BlogPosts extends React.Component {
           categoryTheme: "dark",
           author: "Anna Kunis",
           authorAvatar: require("../images/avatars/1.jpg"),
-          title: "Conduct at an replied removal an amongst",
+          title: "Question Bubble",
           body:
-            "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
+            "Conduct a question bubble sequence",
           date: "28 February 2019"
         },
         {
@@ -206,7 +206,7 @@ class BlogPosts extends React.Component {
                   </Badge>
                   <div className="card-post__author d-flex">
                     <a
-                      href="#"
+                      onClick={() => alert('activate questions')}
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{ backgroundImage: `url('${post.authorAvatar}')` }}
                     >
@@ -216,7 +216,7 @@ class BlogPosts extends React.Component {
                 </div>
                 <CardBody>
                   <h5 className="card-title">
-                    <a href="#" className="text-fiord-blue">
+                    <a onClick={() => alert('activate questions')} className="text-fiord-blue">
                       {post.title}
                     </a>
                   </h5>

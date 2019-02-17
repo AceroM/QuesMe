@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { connect } from 'react-redux';
 import routes from "./routes";
 import withTracker from "./withTracker";
 
@@ -31,4 +31,14 @@ const Dashboard = ({ username }) => (
   </Router>
 );
 
-export default Dashboard;
+const mapState = state => {
+  console.log(state)
+  return {
+    username: state.user.username
+  }
+}
+
+// const mapDispatch = dispatch => {
+// }
+
+export default connect(mapState)(Dashboard);

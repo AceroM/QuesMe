@@ -21,18 +21,44 @@ const PORT = process.env.port || 5000
 const server = app.listen(PORT, () => console.log(`listening on ${PORT}`))
 
 var io = require('socket.io')(server);
-//Socket
+var numUsers = 0;
 io.on('connection', function (socket) {
-    //Listen for connection, when one happens:
-    socket.on('user_connect', function (name) {
-        console.log(name + " connected");
-        io.emit('user_connect', name);
-    });
-    //Requires socket.io to be implemented in html
+    var addedUser = false;
 
-    //When someone disconnects:
+    socket.on('new upvote', (data) => {
+        socket.broadcast.emit('new upvote', {
+            username: socket.username,
+            value: data
+        })
+    })
+
+    socket.on('add user', (username) => {
+        if (addedUser) return;
+
+        socket.username = username;
+        ++numUsers;
+        addedUser = true;
+
+        socket.emit('login', {
+            numUsers,
+            username
+        })
+
+        socket.broadcast.emit('user joined', {
+            username: socket.username,
+            numUsers
+        })
+    });
+
     socket.on('disconnect', function () {
-        io.emit('disconnect', socket.name);
+        if (addedUser) {
+            --numUsers;
+
+            socket.broadcast.emit('user left', {
+                username: socket.username,
+                numUsers
+            })
+        }
     });
 
     //When someone sends a private message:

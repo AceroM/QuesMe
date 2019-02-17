@@ -75,10 +75,10 @@ BlogOverview.propTypes = {
 BlogOverview.defaultProps = {
   smallStats: [
     {
-      label: "Posts",
-      value: "2,390",
-      percentage: "4.7%",
-      increase: true,
+      label: "Students",
+      value: "70",
+      percentage: "",
+      increase: false,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "6", sm: "6" },
       datasets: [
@@ -93,8 +93,8 @@ BlogOverview.defaultProps = {
       ]
     },
     {
-      label: "Pages",
-      value: "182",
+      label: "Classroom Understanding",
+      value: "76%",
       percentage: "12.4",
       increase: true,
       chartLabels: [null, null, null, null, null, null, null],
