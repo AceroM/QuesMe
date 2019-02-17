@@ -33,6 +33,13 @@ Throughout our education, it has always been a teacher to student relationship a
   $ npm install
   $ npm start
   ```
+  For the backend, cd to the root folder and type:
+
+  ```sh
+  $ node app.js
+  ```
+  This should run the Postgres database on http://localhost:5000 
+
   The program should now run on http://localhost:3000
 
 
