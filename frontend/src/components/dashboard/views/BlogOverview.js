@@ -14,7 +14,7 @@ const BlogOverview = ({ smallStats }) => (
   <Container fluid className="main-content-container px-4">
     {/* Page Header */}
     <Row noGutters className="page-header py-4">
-      <PageTitle title="Blog Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
+      <PageTitle title="Classroom Overview" subtitle="Dashboard" className="text-sm-left mb-3" />
     </Row>
 
     {/* Small Stats Blocks */}
@@ -76,9 +76,9 @@ BlogOverview.defaultProps = {
   smallStats: [
     {
       label: "Students",
-      value: "70",
+      value: "35",
       percentage: "",
-      increase: false,
+      increase: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "6", sm: "6" },
       datasets: [
@@ -96,7 +96,8 @@ BlogOverview.defaultProps = {
       label: "Classroom Understanding",
       value: "76%",
       percentage: "12.4",
-      increase: true,
+      increase: false,
+      decrease: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "6", sm: "6" },
       datasets: [
@@ -112,10 +113,9 @@ BlogOverview.defaultProps = {
     },
     {
       label: "Comments",
-      value: "8,147",
-      percentage: "3.8%",
-      increase: false,
-      decrease: true,
+      value: "6",
+      percentage: "",
+      increase: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "4", sm: "6" },
       datasets: [
@@ -130,11 +130,10 @@ BlogOverview.defaultProps = {
       ]
     },
     {
-      label: "New Customers",
-      value: "29",
-      percentage: "2.71%",
-      increase: false,
-      decrease: true,
+      label: "New Students",
+      value: "5",
+      percentage: "16.67%",
+      increase: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "4", sm: "6" },
       datasets: [
@@ -149,11 +148,10 @@ BlogOverview.defaultProps = {
       ]
     },
     {
-      label: "Subscribers",
-      value: "17,281",
-      percentage: "2.4%",
-      increase: false,
-      decrease: true,
+      label: "Total Votes",
+      value: "121",
+      percentage: "",
+      increase: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "4", sm: "6" },
       datasets: [
