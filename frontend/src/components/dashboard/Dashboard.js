@@ -11,6 +11,7 @@ const Dashboard = ({ username }) => (
   <Router basename={process.env.REACT_APP_BASENAME || ""}>
     <div>
       <h1>Welcome back, Professor {username}.</h1>
+      <br></br>
       {routes.map((route, index) => {
         return (
           <Route

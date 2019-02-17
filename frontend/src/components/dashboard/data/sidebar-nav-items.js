@@ -1,19 +1,19 @@
 export default function() {
   return [
     {
-      title: "Blog Dashboard",
+      title: "Classroom Overview",
       to: "/blog-overview",
-      htmlBefore: '<i class="material-icons">edit</i>',
+      htmlBefore: '<i class="material-icons">1</i>',
       htmlAfter: ""
     },
     {
-      title: "Blog Posts",
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
+      title: "Change Modes",
+      htmlBefore: '<i class="material-icons">2</i>',
       to: "/blog-posts",
     },
     {
-      title: "Add New Post",
-      htmlBefore: '<i class="material-icons">note_add</i>',
+      title: "Add New Question",
+      htmlBefore: '<i class="material-icons">3</i>',
       to: "/add-new-post",
     },
     {
@@ -22,8 +22,8 @@ export default function() {
       to: "/components-overview",
     },
     {
-      title: "Tables",
-      htmlBefore: '<i class="material-icons">table_chart</i>',
+      title: "Student Profiles",
+      htmlBefore: '<i class="material-icons">4</i>',
       to: "/tables",
     },
     {
