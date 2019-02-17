@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import {
   Dropdown,
   DropdownToggle,
@@ -10,7 +11,7 @@ import {
   NavLink
 } from "shards-react";
 
-export default class UserActions extends React.Component {
+class UserActions extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,7 +37,7 @@ export default class UserActions extends React.Component {
             src={require("./../../../../images/avatars/0.jpg")}
             alt="User Avatar"
           />{" "}
-          <span className="d-none d-md-inline-block">Sierra Brooks</span>
+          <span className="d-none d-md-inline-block">{this.props.username}</span>
         </DropdownToggle>
         <Collapse tag={DropdownMenu} right small open={this.state.visible}>
           <DropdownItem tag={Link} to="user-profile">
@@ -60,3 +61,12 @@ export default class UserActions extends React.Component {
     );
   }
 }
+
+const mapState = state => {
+  console.log(state)
+  return {
+    username: state.user.username
+  }
+}
+
+export default connect(mapState)(UserActions);

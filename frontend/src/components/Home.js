@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Link, Route, Switch, Redirect } from "react-router-dom";
-import socketIOClient from 'socket.io-client';
+// import socketIOClient from 'socket.io-client';
 import Classroom from './Classroom';
 import Dashboard from './dashboard/Dashboard';
 
