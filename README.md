@@ -2,18 +2,16 @@
 #### Creators: Miguel Acero, Leo-Auyeung, Angela Lim, and Shariar Kabir
 
 #### Overview
-QuesMe is an interactive website that enhances student to teacher engagement into the 21st century by taking in anonymous student questions which is sent to the teacher in real time. Other students will be able to vote on questions and the most popular question will grow in size indicating that is a topic/question most students have. The professor will be able to see this activity through their own page. 
+QuesMe is an interactive website that enhances student to teacher engagement by taking in anonymous student questions which are sent to the teacher in real time. Other students will be able to vote on submitted questions, and the most popular question will grow in size indicating that it is a concerning topic/question. The professor will be able to see this activity through their own page in the form of a dashboard. 
 
 #### Inspiration
-Throughout our education, it has always been a teacher to student relationship and this may not always be the best teaching/learning environment because it lacks input from the students. 
+Throughout our education, it's always been a teacher to student relationship in the classroom. This may not always be the best teaching/learning environment because it discourages proper student engagement. Many students can be too intimidated to ask questions in class because of the fear for being judged for asking a "stupid question." They are also too afraid to answer questions because of the embarrassment of getting it wrong. Additionally, in large lectures, participating is quite difficult thus creating a lecture heavy course which is very mundane. 
 
 #### How we built it!
 
-- Node.js
-- Redux
-- React for the frontend
-- Express for the backend
-- Postgresql
+We built a database for the students and teacher data using PostgreSQL
+The frontend was built using React, Redux and Node.js while the the backend uses Express and Node.js
+We used Socket.io to connect the database and our frontend/backend components to keep them updated in real time
 
 #### Installation and how to run the site
   *Make sure you have Node and React installed. If you don't you can install it with these commands.
