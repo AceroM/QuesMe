@@ -1,4 +1,4 @@
-# HackNYU
+# QuesMe
 #### Creators: Miguel Acero, Leo-Auyeung, Angela Lim, and Shariar Kabir
 
 #### Overview
